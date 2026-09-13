@@ -1,12 +1,28 @@
 #include <iostream>
 using namespace std;
 
-class Book {
-    int price;
+class Employee
+{
 public:
-    Book(int p) { price = p; }
+    virtual void work()
+    {
+        cout << "Employee Work";
+    }
 };
-int main() {
-    Book b(30);
-    return 0;
+
+class Manager : public Employee
+{
+public:
+    void work()
+    {
+        cout << "Manager Work";
+    }
+};
+
+int main()
+{
+    Employee *e = new Manager();
+    e->work();
+
+    delete e;
 }

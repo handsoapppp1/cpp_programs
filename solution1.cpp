@@ -1,15 +1,34 @@
 #include <iostream>
 using namespace std;
 
-class Student {
-    int marks;
+class Animal
+{
 public:
-    Student(int m) { marks = m; }
-    void show() { cout << marks << endl; }
+    virtual void sound()
+    {
+        cout << "Animal Sound";
+    }
 };
-int main() {
-    Student s(85);
-    s.show();
+
+class Dog : public Animal
+{
+public:
+    void sound()
+    {
+        cout << "Dog Barks";
+    }
+};
+
+int main()
+{
+    Animal *a;
+    Dog d;
+
+    a = &d;
+    a->sound();
+
+    return 0;
 }
 
-//output: 85
+// output: Dog Barks
+// because sound() is virtual in base class, and a points to d, therefore using dog sound()
